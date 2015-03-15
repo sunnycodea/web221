@@ -1,0 +1,26 @@
+.container_wf{
+    position:relative;
+    padding-top :40px;
+    padding-left : 7%;
+    margin-left : 10px;
+    margin-top :40px;
+    width:80%; 
+}
+.ks-waterfall{
+    position:absolute;
+    width:34%;
+    overflow:hidden;
+    background-color : white;
+    margin-bottom:14px;
+    text-align:left;
+    left:-9999px;
+    top:-9999px;
+}
+
+.pic_desc {
+    color : black;
+    font-family : "黑体";
+    font-size : 14px;
+    font-style : normal;
+    padding : 10px;
+}

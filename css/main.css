@@ -1,0 +1,64 @@
+
+body 
+{ 
+    background: url(../image/bg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.navbar-width {
+    width:115%;
+    height:120px;
+    background:#00AEEB;
+} 
+.navbar-header {
+    width:107%;
+    height:120px;
+    background:#00AEEB;
+} 
+.navbar-text-div {
+    padding-top:34%;
+    padding-left:15%;
+} 
+.navbar-text {
+    color: #FFFFFF;
+    font-size: larger;
+} 
+.navbar-choose{
+    background:#BBE70D;
+}
+
+.tt1 {
+    font-family : "黑体";
+    font-size : 38px;
+    font-style : normal;
+    padding-top : 55px;
+    color : #A8FF02;
+}
+
+.tt2 {
+    font-family : "黑体";
+    font-size : 24px;
+    font-style : normal;
+    color : #A8FF02;
+}
+
+.tt3 {
+    font-family : "黑体";
+    font-size : 16px;
+    font-style : normal;
+    padding-top : 10px;
+    color : white;
+}
+
+
+.div-rgb-alpha {
+    background: rgba(113, 68, 247,0.3);
+    background :  transparent\9;
+    -ms-filter: "progid:dximagetransform.microsoft.gradient(gradienttype=1,startcolorstr=#80000000,endcolorstr=#80000000)"; /*filter for ie8 */    
+    filter: progid:dximagetransform.microsoft.gradient(gradienttype=1,startcolorstr=#80000000, endcolorstr=#80000000); /*filter for older ies */
+    width : 102%;
+    height : 100%;
+}

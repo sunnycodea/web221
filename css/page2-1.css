@@ -1,0 +1,61 @@
+div.list-group div{
+    overflow:hidden;
+}
+.list-group div span{
+    background-color:transparent;
+    border:0px;
+    font-family:NSimSun;
+    color:#fff;	
+    display: block;
+    padding: 3% 6%;
+    margin-bottom: -1%;
+    background:url(../image/expanded.gif) no-repeat 10px center;
+    cursor:pointer;
+}
+.list-group div.collapsed{height:40px;}
+.list-group div.collapsed span{background-image:url(../image/collapsed.gif);}
+.list-group div a{
+    background-color:transparent;
+    border:0px;
+    font-family:NSimSun;
+    color:#fff;	
+    display: block;
+    padding: 2% 9%;
+    margin-bottom: -1%;
+    text-decoration: none;
+}
+.list-group div a:hover {
+    background:#422AAB;
+    color:#fff;
+    text-decoration: none;
+}
+
+:after, :before{
+    background-color:transparent;
+    text-decoration: none;
+}
+
+
+// page 4
+.list-group-item{
+    background:transparent;
+    background-color:transparent;
+    border:none; 		
+}    
+a.list-group-item{
+    background:transparent;
+    border:none;
+    color:#fff;
+}
+a.list-group-item:hover {
+    background:#422AAB;
+    color:#fff;
+}
+
+.right-content {
+    margin-left:3%;
+    margin-top:3%;
+    color:white;
+    display:none;
+    float:right;
+}
