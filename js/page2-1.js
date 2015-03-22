@@ -15,16 +15,14 @@ function hash_tab(leftList,tab_num) {
     } else {
         var myspp = leftList.submenus[tab_num].getElementsByTagName("span")[0];
         leftList.toggleMenu(myspp.parentNode);
-
-        var that = $(".list-group div a").eq(tab_num)[0];
         var dict = {
             '0' : 0,
             '1' : 3,
             '2' : 5,
         };
+		var that = $(".list-group div a").eq(dict[tab_num]);
         select_show(that,dict[tab_num]);
     }
-
 }
 
 $(document).ready(function(){
