@@ -20,5 +20,45 @@ $(document).ready(function(){
     //$('.col-md-2').hide();
     //$('.col-md-2').slideDown('900000');
     //$('.col-md-2').animate({height:"0px"},0);
-    //$('.col-md-2').animate({height:"130px"},1000);
+    //$('.col-md-2').animate({height:"120px"},1000);
+    $('.col-md-2').css('display','none');
+    $('#nav-1').parent().css('display','block');
+    $('#nav-1').css('margin-top','-200px');
+    $('#nav-1').stop().animate({
+                marginTop: "0px"
+            }, {
+                duration: 1000,
+                easing: "easeOutBounce",
+                complete: function(){
+                    $('#nav-2').parent().css('display','block');
+                    $('#nav-2').css('margin-top','-200px');
+                    $('#nav-2').stop().animate({
+                        marginTop: "0px"
+                        }, {
+                            duration: 1000,
+                            easing: "easeOutBounce",
+                            complete: function(){
+                                $('#nav-3').parent().css('display','block');
+                                $('#nav-3').css('margin-top','-200px');
+                                $('#nav-3').stop().animate({
+                                    marginTop: "0px"
+                                    }, {
+                                        duration: 1000,
+                                        easing: "easeOutBounce",
+                                        complete: function(){
+                                            $('#nav-4').parent().css('display','block');
+                                            $('#nav-4').css('margin-top','-200px');
+                                            $('#nav-4').stop().animate({
+                                                marginTop: "0px"
+                                                }, {
+                                                    duration: 1000,
+                                                    easing: "easeOutBounce",
+                                            });
+                                        }
+                                });
+                            }
+                    });
+                }
+    });
+
 });
