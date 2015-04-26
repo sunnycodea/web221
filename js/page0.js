@@ -3,8 +3,8 @@ $("#logo").fadeIn(3000);
 
 $(document).ready(function() {
     setTimeout(function() {
-        $("#logo").fadeOut(3000,function() {
-            window.location.href='page1.html';   
+        $("#logo").fadeOut(1000,function() {
+            window.location.href='page_start.html';   
         });
     },3000);
 
@@ -91,10 +91,4 @@ $(document).ready(function() {
 	    	parabola.init();
 		}
  	}
-});
-
-$(document).click(function() {
-    $("#logo").fadeOut(1000,function() {
-        window.location.href='page1.html';   
-    });
 });

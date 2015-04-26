@@ -61,4 +61,37 @@ $(document).ready(function(){
                 }
     });
 
+    var jsond = {'1':{"name":"title1"},
+            '2':{"name":"title2"},
+            '3':{"name":"title3"},
+            '4':{"name":"title4"},
+            '5':{"name":"title5"},
+            '6':{"name":"title6"},
+            '7':{"name":"title7"},
+            '8':{"name":"title8"},
+            '9':{"name":"title9"},
+        };
+    $('#pagination-demo').twbsPagination({
+        json: jsond,
+        totalPages: 9,
+        visiblePages: 6,
+        nmap:jsond,
+        first: '<',
+        prev: '<<',
+        next: '>>',
+        last: '>',
+        loop: true,
+        onPageClick: function (event, page) {
+            $(".theme").each(function(key, obj){
+                pgnumber = $(obj).attr('pgnum');
+                pagetmp=page%2+1;
+                if(pagetmp==pgnumber){
+                    $(obj).css('display','block');
+                }else{
+                    $(obj).css('display','none');
+                }
+            });
+        }
+    });
+
 });

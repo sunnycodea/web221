@@ -76,3 +76,65 @@
     color:white;
 }
 
+.transp{
+  background-color: rgba(0, 174, 235, 0.8);/* IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
+  padding-top: 100px; 
+  height: 500px; 
+  width: 105%;
+  cursor:pointer;
+}
+.transp:hover
+{
+    background-color:rgba(187, 231, 13, 0.8)
+}
+.transp p{
+  text-align:center;
+}
+@media \0screen\,screen\9 {/* 只支持IE6、7、8 */
+  .transp{
+    background-color:#00AEEB;
+    filter:Alpha(opacity=80);
+    position:static; /* IE6、7、8只能设置position:static(默认属性) ，否则会导致子元素继承Alpha值 */
+    *zoom:1; /* 激活IE6、7的haslayout属性，让它读懂Alpha */
+  }
+  .transp:hover{
+    background-color:#BBE70D;
+    filter:Alpha(opacity=80);
+    position:static; /* IE6、7、8只能设置position:static(默认属性) ，否则会导致子元素继承Alpha值 */
+    *zoom:1; /* 激活IE6、7的haslayout属性，让它读懂Alpha */
+  }
+  .transp p{
+    position: relative;/* 设置子元素为相对定位，可让子元素不继承Alpha值 */
+  }  
+}
+
+.gap_line{
+    border : 1px dashed white; 
+    margin-top:0px;
+    margin-bottom:10px;
+}
+
+.circle{ border:2px solid #F9F6F5; width:100px; height:100px; margin:0 auto; 
+-webkit-border-radius:50px; 
+-moz-border-radius:50px; 
+-o-border-radius:50px; 
+border-radius:50px; 
+} 
+
+.row-margin-top {
+        margin-top: 10px;
+    }
+.mouseky{
+    cursor:pointer;
+}
+.mouseky div{
+    background:#FACE0D;
+}
+.price p{
+    text-align:center;
+    margin-top:20px;
+}
+.theme{
+    width:102%;
+    display:none;
+}
