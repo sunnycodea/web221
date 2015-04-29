@@ -7,7 +7,13 @@ body
     -o-background-size: cover;
     background-size: cover;
 }
-
+.navm{
+    cursor: pointer;
+}
+.navm:hover
+{
+    background-color:#BBE70D
+}
 .navbar-width {
     width:115%;
     height:120px;
