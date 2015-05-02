@@ -29,9 +29,9 @@ $("#a_tab4").click(function() {
 });
 
 //弹出层
-var cnt_who = "<img width='708' heght='419' src='http://localhost/image/start_who.jpg' />";
+var cnt_who = "<img width='708' heght='419' src='http://115.28.166.62/image/start_who.jpg' />";
 T$('click_who').onclick = function(){TINY.box.show(cnt_who,0,0,0,1)}
-var cnt_what = "<img width='708' heght='419' src='http://localhost/image/start_what.jpg' />";
+var cnt_what = "<img width='708' heght='419' src='http://115.28.166.62/image/start_what.jpg' />";
 T$('click_what').onclick = function(){TINY.box.show(cnt_what,0,0,0,1)}
-var cnt_how= "<img width='708' heght='419' src='http://localhost/image/start_how.jpg' />";
+var cnt_how= "<img width='708' heght='419' src='http://115.28.166.62/image/start_how.jpg' />";
 T$('click_how').onclick = function(){TINY.box.show(cnt_how,0,0,0,1)}
