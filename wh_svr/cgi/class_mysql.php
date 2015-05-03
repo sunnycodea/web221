@@ -51,10 +51,10 @@ class class_mysql{
 
 function conn_db()
 {
-    $db_ip = '10.24.248.90';
+    $db_ip = '127.0.0.1';
     $db_user = 'root';
-    $db_passwd = '';
-    $db_name = 'dbwh';
+    $db_passwd = '123456';
+    $db_name = 'wh_svr';
     $db = new class_mysql($db_ip,$db_user,$db_passwd,$db_name);
     $db->conn();
     return $db;	
