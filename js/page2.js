@@ -63,7 +63,7 @@ $(document).ready(function(){
     var jsond = {};
     $.ajax({
         type: "post",
-        url: "http://localhost/wh_svr/cgi/getTheme.php",
+        url: "wh_svr/cgi/getTheme.php",
         dataType:'json',
         beforeSend: function(XMLHttpRequest){
             //ShowLoading();
