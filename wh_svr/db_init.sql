@@ -1,5 +1,6 @@
 -- CREATE DATABASE  weihang;
 -- USE weihang; 
+SET NAMES utf8;
 CREATE TABLE iF NOT EXISTS tbTheme (
   iThemeID int unsigned not null AUTO_INCREMENT comment '主题id',
   szName varchar(128) not null DEFAULT '' comment '主题名称',
