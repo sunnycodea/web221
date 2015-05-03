@@ -90,7 +90,8 @@ TINY.box=function(){
 			}
 		},
 		size:function(e,w,h,s){
-			h = h+20;
+			//20padding + 20border
+			h = h+20+20;
 			e=typeof e=='object'?e:T$(e); clearInterval(e.si);
 			var ow=e.offsetWidth, oh=e.offsetHeight,
 			wo=ow-parseInt(e.style.width), ho=oh-parseInt(e.style.height);
