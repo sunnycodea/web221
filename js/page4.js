@@ -12,12 +12,13 @@ $(document).ready(function(){
     $(".list-group a").each(function(i){
 
         $(this).click(function(){
-            $(this).css("background","#422AAB");
+        	/*modified in 2015-05-03*/
+            $(this).css("background","#BBE70D");
             $(this).css("color","#fff");
             $(this).css("border","none");
             $(".list-group a:gt(" + i + ")").each(function(){
                 $(this).mouseover(function(){
-                    $(this).css("background","#422AAB");
+                    $(this).css("background","#BBE70D");
                 })
                 .mouseout(function(){
                     $(this).css("background","transparent");
@@ -27,7 +28,7 @@ $(document).ready(function(){
 
             $(".list-group a:lt(" + i + ")").each(function(){
                 $(this).mouseover(function(){
-                    $(this).css("background","#422AAB");
+                    $(this).css("background","#BBE70D");
                 })
                 .mouseout(function(){
                     $(this).css("background","transparent");
@@ -36,9 +37,9 @@ $(document).ready(function(){
             });
 
             $(this).mouseout(function(){		
-                $(this).css("background","#422AAB");
+                $(this).css("background","#BBE70D");
             });
-
+            /*******************************/
             $divList = $("#right-nav").children("div");
             $divList.hide(); 
             $divList.eq(i).show();

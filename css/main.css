@@ -61,7 +61,7 @@ body
 
 
 .div-rgb-alpha {
-    background: rgba(113, 68, 247,0.3);
+    background: rgba(0, 174, 235,0.78);/*modified in 2015-05-03*/ 
     background :  transparent\9;
     -ms-filter: "progid:dximagetransform.microsoft.gradient(gradienttype=1,startcolorstr=#80000000,endcolorstr=#80000000)"; /*filter for ie8 */    
     filter: progid:dximagetransform.microsoft.gradient(gradienttype=1,startcolorstr=#80000000, endcolorstr=#80000000); /*filter for older ies */
