@@ -13,17 +13,17 @@
 
     var old = $.fn.twbsPagination;
 
-    var init_nmap = {'1':{'name':'test1'},
-        '2':{'name':'test2'},
-        '3':{'name':'test3'},
-        '4':{'name':'test4'},
-        '5':{'name':'test5'},
-        '6':{'name':'test6'},
-        '7':{'name':'test7'},
-        '8':{'name':'test8'},
-        '9':{'name':'test9'},
-        '10':{'name':'test10'},
-        '11':{'name':'test11'},
+    var init_nmap = {'1':{'name':'test1','id':'1'},
+        '2':{'name':'test2','id':'2'},
+        '3':{'name':'test3','id':'3'},
+        '4':{'name':'test4','id':'4'},
+        '5':{'name':'test5','id':'5'},
+        '6':{'name':'test6','id':'6'},
+        '7':{'name':'test7','id':'7'},
+        '8':{'name':'test8','id':'8'},
+        '9':{'name':'test9','id':'9'},
+        '10':{'name':'test10','id':'10'},
+        '11':{'name':'test11','id':'11'},
     };
 
     // PROTOTYPE AND CONSTRUCTOR
@@ -166,10 +166,13 @@
             itemContainer.data('page', page);
             itemContainer.data('page-type', type);
             var pgnum = itemText;
+            var pid = -1;
             if($.isNumeric(itemText)){
+                pid = this.options.nmap[itemText]['id'];
                 itemText = this.options.nmap[itemText]['name'];
             }
             itemContent.attr('pnum', pgnum);
+            itemContent.attr('pid', pid);
             itemContainer.append(itemContent.attr('href', this.makeHref(page)).html(itemText));
             return itemContainer;
         },

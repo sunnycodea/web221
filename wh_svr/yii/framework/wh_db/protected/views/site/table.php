@@ -9,8 +9,8 @@ $this->pageTitle=Yii::app()->name;
 <a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php?r=tbTheme" >1、主题数据表管理</a>
 </p>
 <p>
-<a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php?r=tbRoute" >2、主题数据表管理</a>
+<a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php?r=tbRoute" >2、线路数据表管理</a>
 </p>
 <p>
-<a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php?r=tbDaysInfo" >3、主题数据表管理</a>
+<a href="<?php echo Yii::app()->request->baseUrl; ?>/index.php?r=tbDaysInfo" >3、天数信息数据表管理</a>
 </p>
