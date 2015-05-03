@@ -60,31 +60,56 @@ $(document).ready(function(){
                     });
                 }
     });
-
-    var jsond =  {'1':{'name':'test1','id':'10001'},
-        '2':{'name':'test2','id':'10002'},
-        '3':{'name':'test3','id':'10003'},
-        '4':{'name':'test4','id':'10004'},
-        '5':{'name':'test5','id':'10005'},
-        '6':{'name':'test6','id':'10006'},
-        '7':{'name':'test7','id':'10007'},
-        '8':{'name':'test8','id':'10008'},
-        '9':{'name':'test9','id':'10009'},
-        '10':{'name':'test10','id':'100010'},
-        '11':{'name':'test11','id':'100011'},
-    };
+    var jsond = {};
     $.ajax({
         type: "post",
-        url: "http://localhost/page_travel.html",
+        url: "wh_svr/cgi/getTheme.php",
         dataType:'json',
-        data:{  
-            type: 'theme'
-        },   
         beforeSend: function(XMLHttpRequest){
             //ShowLoading();
         },
         success: function(data, textStatus){
             jsond = data;
+            $('#pagination-demo').twbsPagination({
+                totalPages: Object.keys(jsond).length, 
+                visiblePages: 6,
+                nmap:jsond,
+                first: '<',
+                prev: '<<',
+                next: '>>',
+                last: '>',
+                loop: true,
+                onPageClick: function (event, page) {
+                    $(".theme").remove();
+                    $.ajax({
+                        type: "get",
+                        url: "wh_svr/cgi/getRoute.php",
+                        dataType:'json', 
+                        data:{  
+                            iThemeID : 1001//jsond[page].id
+                        },     
+                        beforeSend: function(XMLHttpRequest){
+                            //ShowLoading();
+                        },
+                        success: function(data, textStatus){
+                            var rditems = createThemeDivItems(page,data);
+                            $("#hehe").after(rditems);
+                            //$("item",data).each(function(i, domEle){
+                            ///   $(".ajax.ajaxResult").append("<li>"+$(domEle).children("title").text()+"</li>");
+                            //});
+                        },
+                        complete: function(XMLHttpRequest, textStatus){
+                            //HideLoading();
+                        },
+                        error: function(XMLHttpRequest, textStatus, errorThrown){
+                            //请求出错处理
+                            //console.log(textStatus);
+                            //console.log(XMLHttpRequest.status);
+                            //console.log(XMLHttpRequest.readyState);
+                        }
+                    });
+                }
+            });
             //$("item",data).each(function(i, domEle){
             ///   $(".ajax.ajaxResult").append("<li>"+$(domEle).children("title").text()+"</li>");
             //});
@@ -94,98 +119,38 @@ $(document).ready(function(){
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
             //请求出错处理
-            console.log(textStatus);
+            //console.log(textStatus);
             //console.log(XMLHttpRequest.status);
             //console.log(XMLHttpRequest.readyState);
         }
     });
-    var data_set = {'0':{'title':'title1','brief':'brief1','price':'1111'},
-                    '1':{'title':'title2','brief':'brief2','price':'2222'},
-                    '2':{'title':'title3','brief':'brief3','price':'3333'},
-                    '3':{'title':'title4','brief':'brief4','price':'4444'},
-                    '4':{'title':'title5','brief':'brief5','price':'5555'},
-                    '5':{'title':'title6','brief':'brief6','price':'6666'},
-                    '6':{'title':'title7','brief':'brief7','price':'7777'},
-                    '7':{'title':'title8','brief':'brief8','price':'8888'},
-                    '8':{'title':'title9','brief':'brief9','price':'9999'},
-                    '9':{'title':'title10','brief':'brief10','price':'1010'}
-            };
-    $('#pagination-demo').twbsPagination({
-        totalPages: Object.keys(jsond).length, 
-        visiblePages: 6,
-        nmap:jsond,
-        first: '<',
-        prev: '<<',
-        next: '>>',
-        last: '>',
-        loop: true,
-        onPageClick: function (event, page) {
-            $(".theme").remove();
-            /*
-            $(".theme").each(function(key, obj){
-                pgnumber = $(obj).attr('pgnum');
-                console.log(pgnumber);
-                //pagetmp=page%2+1;
-                if(pagetmp==pgnumber){
-                    $(obj).css('display','block');
-                }else{
-                    $(obj).css('display','none');
-                }
-                $('.mouseky').each(function(key, obj){
-                    var myVar = $(obj).find('.price').html('hello') ;
-                     //console.log(myVar);
-                     
-                });
-               
-            });*/ 
-            $.ajax({
-                type: "post",
-                url: "http://localhost/page_travel.html",
-                dataType:'json', 
-                data:{  
-                    type: 'route',  
-                    theme_id : jsond[page].id
-                },     
-                beforeSend: function(XMLHttpRequest){
-                    //ShowLoading();
-                },
-                success: function(data, textStatus){
-                    var rditems = createThemeDivItems(page,data);
-                    $("#hehe").after(rditems);
-                    //$("item",data).each(function(i, domEle){
-                    ///   $(".ajax.ajaxResult").append("<li>"+$(domEle).children("title").text()+"</li>");
-                    //});
-                },
-                complete: function(XMLHttpRequest, textStatus){
-                    //HideLoading();
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrown){
-                    //请求出错处理
-                    console.log(textStatus);
-                    //console.log(XMLHttpRequest.status);
-                    //console.log(XMLHttpRequest.readyState);
-                }
-            });
-            var rditems = createThemeDivItems(page,data_set);
-            $("#hehe").after(rditems);
-        }
-    });
+   /* var data_set = {'1':{'title':'title1','brief':'brief1','price':'1111','route_id':'11'},
+                    '2':{'title':'title2','brief':'brief2','price':'2222'},
+                    '3':{'title':'title3','brief':'brief3','price':'3333'},
+                    '4':{'title':'title4','brief':'brief4','price':'4444'},
+                    '5':{'title':'title5','brief':'brief5','price':'5555'},
+                    '6':{'title':'title6','brief':'brief6','price':'6666'},
+                    '7':{'title':'title7','brief':'brief7','price':'7777'},
+                    '9':{'title':'title8','brief':'brief8','price':'8888'},
+                    '10':{'title':'title9','brief':'brief9','price':'9999'},
+                    '11':{'title':'title10','brief':'brief10','price':'1010'}
+            };*/
+    
 
     var createThemeDivItems = function ( page,data_set) {
         var themeContainer = $('<div></div>');
         themeContainer.addClass("theme");
         themeContainer.attr('pnum', page);
 
-        themeContainer.append(createRouteDivItems(page,10,data_set));
+        themeContainer.append(createRouteDivItems(page,Object.keys(data_set).length,data_set));
         return themeContainer;
     };
     
     var createRouteDivItems = function (page, route_num,data_set) {
         var $divItems = $();
-
-        for (var i=0;i<route_num;i++)
+        for (var i=1;i<=route_num;i++)
         {
-            if(i%2==0){
+            if(i%2==1){
               var  rowContent = $('<div></div>');
             }
             rowContent = createRouteItem(rowContent,data_set[i].title+page,data_set[i].brief+page,data_set[i].price*page)
@@ -224,12 +189,11 @@ $(document).ready(function(){
         return rowContent;
     }
     $.ajax({
-        type: "post",
-        url: "http://localhost/page_travel.html",
+        type: "get",
+        url: "wh_svr/cgi/getRoute.php",
         dataType:'json', 
         data:{  
-            type: 'route',  
-            page_num : jsond[1].id
+             iThemeID : 1001
         },   
         beforeSend: function(XMLHttpRequest){
             //ShowLoading();
@@ -246,11 +210,9 @@ $(document).ready(function(){
         },
         error: function(XMLHttpRequest, textStatus, errorThrown){
             //请求出错处理
-            console.log(textStatus);
+            //console.log(textStatus);
             //console.log(XMLHttpRequest.status);
             //console.log(XMLHttpRequest.readyState);
         }
     });
-    var rditems = createThemeDivItems(1,data_set);
-    $("#hehe").after(rditems);
 });
