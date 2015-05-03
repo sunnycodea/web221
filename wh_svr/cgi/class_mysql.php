@@ -26,6 +26,7 @@ class class_mysql{
             printf("Connect failed: %s\n",self::$mysqli->connect_error);
                 exit();
         }
+        self::$mysqli->set_charset("utf8");
         return self::$mysqli;
     }
 
