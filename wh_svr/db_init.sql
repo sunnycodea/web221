@@ -16,6 +16,7 @@ CREATE TABLE iF NOT EXISTS tbRoute (
   iThemeID int unsigned not null DEFAULT 0 comment '主题id',
   szName varchar(128) not null DEFAULT '' comment '线路名称',
   szDesc varchar(1024) not null DEFAULT '' comment '线路描述',
+  szImgUrl varchar(128) not null DEFAULT '' comment '线路图片',
   iMoney int unsigned not null DEFAULT 0 comment '线路价格',
   iDays int unsigned not null DEFAULT 0 comment '线路天数',
   iPrority tinyint unsigned DEFAULT 0 comment '优先级',
