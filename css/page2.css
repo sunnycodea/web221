@@ -47,7 +47,7 @@
 	position:relative;
 }
 .panel .front .front-inner {
-	height:220px;
+	height:150px;/*modified in 2015-05-03*/
 	width:100%;
 	margin-top:280px;
 	background-color:rgba(0,174,235,0.5);
