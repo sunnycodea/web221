@@ -194,7 +194,7 @@ border-radius:50px;
 }
 
 #popupme{
-    
+    display: none;
     width:808px;
     height:419px;
     background:white;
