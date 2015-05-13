@@ -1,0 +1,116 @@
+<!--#include file="header.html"-->
+<!-- Begin page content -->
+<style type="text/css">
+#popupme{
+    width:708px;
+    height:419px;
+    background:white;
+    opacity: 0.85;
+    display: block;
+}
+#popup_info{
+    padding-top: 60px;
+    padding-left: 118px; 
+}
+#day_all{
+
+}
+#day_txt textarea{
+    resize: none;
+    background: #00ACEA;
+    color: white;
+    height: 206px;
+}
+.h_line{
+    float:left;
+    border : 1px solid #00ACEA;
+    margin-top:6px;
+    width:75px; 
+}
+.licircle{ 
+    float:left;
+    background: #00ACEA;
+    border:3px solid #F9F6F5; width:15px; height:15px;
+    -webkit-border-radius:50px; 
+    -moz-border-radius:50px; 
+    -o-border-radius:50px; 
+    border-radius:50px; 
+    margin-left: 5px;
+} 
+.day_info{
+    color: #00ACEA;
+    margin-bottom: -8px;
+    width: 24px;
+    cursor:pointer;
+    margin-top: 20px;
+}
+.day_info p{
+    padding-left: 5px;
+
+}
+.day_num{
+   margin-left: 2px;
+}
+
+</style>
+
+<link rel="stylesheet" href="../css/common.css" type="text/css" />
+<script type="text/javascript" src="../js/tinybox.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    var content2 = "<img width='640' height='466' src='http://image.zhangxinxu.com/image/study/s/mm10.jpg' />";
+    //T$('click_test2').onclick = function(){TINY.box.show(content2,0,0,0,1)}
+    $("#first_day").click(function(){
+        $("#first_day").css({"background":"#00ACEA","color":"white","margin-top":"12px"});
+        $("#first_day").next().css({"background": "#BBE70D","width":"18px", "height":"18px","margin-top":"6px"});
+        $("#first_day").next().next().css({"margin-top":"14px"});
+    });
+    var dayWidth = 0;
+    $(".day_info").each(function(i, domday){
+        dayWidth +=parseInt($(domday).parent().css('width'));   
+        //console.log(dayWidth);      
+    });
+    $("#day_txt textarea").css('width',dayWidth);
+
+});
+</script>
+<div id ='popupme'>
+    <div id = 'popup_info'>
+        <div id ='day_all'>
+            <div style='float:left;' >
+                <div id ='first_day' class='day_info'><p >第<br/><span class='day_num'>1</span><br/>天</p></div>
+                <div class='licircle'></div>
+                <hr class ='h_line'/>
+            </div>
+            <div style='float:left;' >
+                <div id ='first_day' class='day_info'><p >第<br/><span class='day_num'>1</span><br/>天</p></div>
+                <div class='licircle'></div>
+                <hr class ='h_line'/>
+            </div>
+          <div style='float:left;' >
+                <div id ='first_day' class='day_info'><p >第<br/><span class='day_num'>1</span><br/>天</p></div>
+                <div class='licircle'></div>
+                <hr class ='h_line'/>
+            </div>
+          <div style='float:left;' >
+                <div id ='first_day' class='day_info'><p >第<br/><span class='day_num'>1</span><br/>天</p></div>
+                <div class='licircle'></div>
+                <hr class ='h_line'/>
+            </div>
+            <div style='float:left;' >
+                <div id ='first_day' class='day_info'><p >第<br/><span class='day_num'>1</span><br/>天</p></div>
+                <div class='licircle'></div>
+                <hr class ='h_line'/>
+            </div>
+            <div style='float:left;' >
+                <div id ='first_day' class='day_info'><p >第<br/><span class='day_num'>1</span><br/>天</p></div>
+                <div class='licircle'></div>
+            </div>
+        </div>
+        <div id='day_txt' style='clear:both;'> 
+            <textarea >当日线路信息</textarea>
+        </div>
+    </div>
+</div>
+          
+<!--#include file="footer.html"-->

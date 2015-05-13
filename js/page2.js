@@ -94,9 +94,18 @@ $(document).ready(function(){
                         success: function(data, textStatus){
                             var rditems = createThemeDivItems(page,data);
                             $("#hehe").after(rditems);
-                            //$("item",data).each(function(i, domEle){
-                            ///   $(".ajax.ajaxResult").append("<li>"+$(domEle).children("title").text()+"</li>");
-                            //});
+                            $(".mouseky").each(function(index, element){
+                                var rid = $(element).attr('route_id');
+                　　            $(element).click(function(){
+                                    $("#day_all").remove();
+                                    var rditems = createAlldayItems(rid,rdata);
+                                    $("#popup_info").prepend(rditems);
+                                    var dayWidth = 97*(Object.keys(rdata).length-1)+30;
+                                    $("#day_txt textarea").css('width',dayWidth);
+                                    TINY.box.show($("#popupme").html(),0,0,0,1);
+                                    //$("#popupme").css('display','block');
+                　　            });
+                            });
                         },
                         complete: function(XMLHttpRequest, textStatus){
                             //HideLoading();
@@ -153,13 +162,13 @@ $(document).ready(function(){
             if(i%2==1){
               var  rowContent = $('<div></div>');
             }
-            rowContent = createRouteItem(rowContent,data_set[i].title+page,data_set[i].brief+page,data_set[i].price*page)
+            rowContent = createRouteItem(rowContent,data_set[i].iRouteID,data_set[i].title+page,data_set[i].brief+page,data_set[i].price*page)
             $divItems = $divItems.add(rowContent);
         }
         return $divItems;
         
     };
-    var createRouteItem = function (rowContent,title,brief,price){
+    var createRouteItem = function (rowContent,RouteID,title,brief,price){
         var mouseContent = $('<div></div>'),
             tfoContent = $('<div></div>'),
             titleContent = $('<h4></h4>'),
@@ -171,6 +180,7 @@ $(document).ready(function(){
         rowContent.addClass("row yabohe row-margin-top clearfix");
 
         mouseContent.addClass("col-md-6 column mouseky");
+        mouseContent.attr('route_id',RouteID);
 
         tfoContent.addClass("col-md-6 column info" );
         titleContent.addClass("title" ).html(title);
@@ -201,9 +211,19 @@ $(document).ready(function(){
         success: function(data, textStatus){
             var rditems = createThemeDivItems(1,data);
             $("#hehe").after(rditems);
-            //$("item",data).each(function(i, domEle){
-            ///   $(".ajax.ajaxResult").append("<li>"+$(domEle).children("title").text()+"</li>");
-            //});
+             $(".mouseky").each(function(index, element){
+                var rid = $(element).attr('route_id');
+　　            $(element).click(function(){
+                    $("#day_all").remove();
+                    var rditems = createAlldayItems(rid,rdata);
+                    $("#popup_info").prepend(rditems);
+                    var dayWidth = 97*(Object.keys(rdata).length-1)+30;
+                    $("#day_txt textarea").css('width',dayWidth);
+                    TINY.box.show($("#popupme").html(),0,0,0,1);
+                    
+　　            });
+            });
+            
         },
         complete: function(XMLHttpRequest, textStatus){
             //HideLoading();
@@ -215,4 +235,59 @@ $(document).ready(function(){
             //console.log(XMLHttpRequest.readyState);
         }
     });
+    var rdata={
+        '1':{'iDayNum':1,'iDayTxt':'当日旅游线路信息'},
+        '2':{'iDayNum':2,'iDayTxt':'当日旅游线路信息'},
+        '3':{'iDayNum':3,'iDayTxt':'当日旅游线路信息'},
+        '4':{'iDayNum':4,'iDayTxt':'当日旅游线路信息'},
+        '5':{'iDayNum':5,'iDayTxt':'当日旅游线路信息'},
+        '6':{'iDayNum':6,'iDayTxt':'当日旅游线路信息'},
+    };
+   
+    var createAlldayItems = function (RouteID,rdata){
+        var total_days = Object.keys(rdata).length;
+        var rowContent = $('<div></div>');
+        rowContent.attr('id','day_all');
+        for (var i=1;i<=total_days;i++){
+            if(i<total_days){
+                rowContent.append(createOnedayItem(rowContent,RouteID,i,false));
+            }
+            else{
+                rowContent.append(createOnedayItem(rowContent,RouteID,i,true));
+            }
+        }
+        return rowContent;
+    }
+    var createOnedayItem = function (rowContent,RouteID,day_num,islast){
+        var mouseContent = $('<div></div>'),
+            dayContent = $('<div></div>'),
+            pfoContent = $('<p></p>'),
+            spanContent = $('<span></span>'),
+            circleContent = $('<div></div>'),
+            hrContent = $('<hr>');
+
+        mouseContent.addClass("foleft");
+
+        //dayContent.attr('id', 'value');
+        dayContent.addClass("day_info" );
+        spanContent.addClass("day_num");
+        spanContent.html(day_num);
+        pfoContent.append(spanContent);
+        spanContent.before("第<br/>");
+        spanContent.after("<br/>天");
+        dayContent.append(pfoContent);
+
+        circleContent.addClass("licircle");
+        if(!islast){
+            hrContent.addClass("h_line");
+        }
+
+        mouseContent.append(dayContent);
+        mouseContent.append(circleContent);
+        if(!islast){
+            mouseContent.append(hrContent);
+        }
+        return mouseContent;
+    }
 });
+
