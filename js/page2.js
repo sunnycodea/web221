@@ -86,7 +86,7 @@ $(document).ready(function(){
                         url: "wh_svr/cgi/getRoute.php",
                         dataType:'json', 
                         data:{  
-                            iThemeID : 1001//jsond[page].id
+                            iThemeID : jsond[page].id
                         },     
                         beforeSend: function(XMLHttpRequest){
                             //ShowLoading();
