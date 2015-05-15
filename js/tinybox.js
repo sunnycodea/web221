@@ -78,6 +78,10 @@ TINY.box=function(){
 			var o=Math.round(e.style.opacity*100);
 			if(o==a){
 				clearInterval(e.ai);
+				//设置opacity值
+				var opp = 85;
+				e.style.opacity=opp/100; 
+				e.style.filter='alpha(opacity='+opp+')'
 				if(d==-1){
 					e.style.display='none';
 					e==p?TINY.box.alpha(m,-1,0,3):b.innerHTML=p.style.backgroundImage=''

@@ -96,15 +96,10 @@ $(document).ready(function(){
                             $("#hehe").after(rditems);
                             $(".mouseky").each(function(index, element){
                                 var rid = $(element).attr('route_id');
-                　　            $(element).click(function(){
-                                    $("#day_all").remove();
-                                    var rditems = createAlldayItems(rid,rdata);
-                                    $("#popup_info").prepend(rditems);
-                                    var dayWidth = 97*(Object.keys(rdata).length-1)+30;
-                                    $("#day_txt textarea").css('width',dayWidth);
-                                    TINY.box.show($("#popupme").html(),0,0,0,1);
-                                    //$("#popupme").css('display','block');
-                　　            });
+                    　　        $(element).click(function(){
+                                    var myiframe = '<iframe scrolling="auto"  id="poiframe" src="../page_day.html" style="height: 419px;width: 708px;"></iframe>';
+                                    TINY.box.show(myiframe,0,0,0,1);
+                                });
                             });
                         },
                         complete: function(XMLHttpRequest, textStatus){
@@ -211,17 +206,13 @@ $(document).ready(function(){
         success: function(data, textStatus){
             var rditems = createThemeDivItems(1,data);
             $("#hehe").after(rditems);
-             $(".mouseky").each(function(index, element){
+            $(".mouseky").each(function(index, element){
                 var rid = $(element).attr('route_id');
-　　            $(element).click(function(){
-                    $("#day_all").remove();
-                    var rditems = createAlldayItems(rid,rdata);
-                    $("#popup_info").prepend(rditems);
-                    var dayWidth = 97*(Object.keys(rdata).length-1)+30;
-                    $("#day_txt textarea").css('width',dayWidth);
-                    TINY.box.show($("#popupme").html(),0,0,0,1);
-                    
-　　            });
+    　　        $(element).click(function(){
+                    var myiframe = '<iframe scrolling="auto"  id="poiframe" src="../page_day.html" style="height: 419px;width: 708px;"></iframe>';
+                    TINY.box.show(myiframe,0,0,0,1);
+                    //TINY.box.twalpha($("#tinymask").get(0),81,1,1);
+                });
             });
             
         },
@@ -235,59 +226,6 @@ $(document).ready(function(){
             //console.log(XMLHttpRequest.readyState);
         }
     });
-    var rdata={
-        '1':{'iDayNum':1,'iDayTxt':'当日旅游线路信息'},
-        '2':{'iDayNum':2,'iDayTxt':'当日旅游线路信息'},
-        '3':{'iDayNum':3,'iDayTxt':'当日旅游线路信息'},
-        '4':{'iDayNum':4,'iDayTxt':'当日旅游线路信息'},
-        '5':{'iDayNum':5,'iDayTxt':'当日旅游线路信息'},
-        '6':{'iDayNum':6,'iDayTxt':'当日旅游线路信息'},
-    };
-   
-    var createAlldayItems = function (RouteID,rdata){
-        var total_days = Object.keys(rdata).length;
-        var rowContent = $('<div></div>');
-        rowContent.attr('id','day_all');
-        for (var i=1;i<=total_days;i++){
-            if(i<total_days){
-                rowContent.append(createOnedayItem(rowContent,RouteID,i,false));
-            }
-            else{
-                rowContent.append(createOnedayItem(rowContent,RouteID,i,true));
-            }
-        }
-        return rowContent;
-    }
-    var createOnedayItem = function (rowContent,RouteID,day_num,islast){
-        var mouseContent = $('<div></div>'),
-            dayContent = $('<div></div>'),
-            pfoContent = $('<p></p>'),
-            spanContent = $('<span></span>'),
-            circleContent = $('<div></div>'),
-            hrContent = $('<hr>');
 
-        mouseContent.addClass("foleft");
-
-        //dayContent.attr('id', 'value');
-        dayContent.addClass("day_info" );
-        spanContent.addClass("day_num");
-        spanContent.html(day_num);
-        pfoContent.append(spanContent);
-        spanContent.before("第<br/>");
-        spanContent.after("<br/>天");
-        dayContent.append(pfoContent);
-
-        circleContent.addClass("licircle");
-        if(!islast){
-            hrContent.addClass("h_line");
-        }
-
-        mouseContent.append(dayContent);
-        mouseContent.append(circleContent);
-        if(!islast){
-            mouseContent.append(hrContent);
-        }
-        return mouseContent;
-    }
 });
 
