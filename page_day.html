@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="weihang travel">
+    <title>威航国际旅行社</title>
+<style type="text/css">
+#popupme{
+    /*width:708px;
+    height:419px;*/
+    /*opacity: 0.85;*/
+}
+#popup_info{
+    padding-left: 9px; 
+}
+#day_all{
+
+}
+#day_txt textarea{
+    resize: none;
+    background: #00ACEA;
+    color: white;
+    height: 240px;
+}
+.h_line{
+    float:left;
+    border : 1px solid #00ACEA;
+    margin-top:6px;
+    width:75px; 
+}
+.licircle{ 
+    float:left;
+    background: #00ACEA;
+    border:3px solid #F9F6F5; width:10px; height:10px;
+    -webkit-border-radius:50px; 
+    -moz-border-radius:50px; 
+    -o-border-radius:50px; 
+    border-radius:50px; 
+    margin-left: 5px;
+}
+.licircle_check{ 
+    margin-top:10px;
+} 
+.day_info{
+    color: #00ACEA;
+    margin-bottom: -8px;
+    width: 24px;
+    cursor:pointer;
+    margin-top: 20px;
+}
+.day_info_check{
+    background:#00ACEA;
+    color:white;
+    margin-top:12px; 
+    margin-left: 5px;
+}
+.day_info_p{
+    padding-left: 5px;
+    margin-bottom: 10px;
+}
+.day_info_p_check{
+    background: #BBE70D;
+    width:15px;
+    height:15px;
+}
+.day_num{
+   margin-left: 4px;
+}
+.foleft{
+    float: left;
+    margin-bottom: 10px;
+}
+
+.div_center {
+  width: auto;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 45px;
+}
+</style>
+<script src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+    var rdata={
+        '1':{'iDayNum':1,'iDayTxt':'111111当日旅游线路信息'},
+        '2':{'iDayNum':2,'iDayTxt':'22222当日旅游线路信息'},
+        '3':{'iDayNum':3,'iDayTxt':'3333333当日旅游线路信息'},
+        '4':{'iDayNum':4,'iDayTxt':'4444444当日旅游线路信息'},
+        '5':{'iDayNum':5,'iDayTxt':'5555555当日旅游线路信息'},
+        '6':{'iDayNum':6,'iDayTxt':'666666666当日旅游线路信息'},
+    };
+    var createAlldayItems = function (RouteID,rdata,callback){
+        var total_days = Object.keys(rdata).length;
+        var rowContent = $('<div></div>');
+        rowContent.attr('id','day_all');
+        for (var i=1;i<=total_days;i++){
+            if(i<total_days){
+                rowContent.append(createOnedayItem(rowContent,RouteID,i,false));
+            }
+            else{
+                rowContent.append(createOnedayItem(rowContent,RouteID,i,true));
+            }
+        }
+        //do something.
+        (callback && typeof(callback) === "function") && callback();
+        return rowContent;
+    }
+    var createOnedayItem = function (rowContent,RouteID,day_num,islast){
+        var mouseContent = $('<div></div>'),
+            dayContent = $('<div></div>'),
+            pfoContent = $('<p></p>'),
+            spanContent = $('<span></span>'),
+            circleContent = $('<div></div>'),
+            hrContent = $('<hr>');
+
+        mouseContent.addClass("foleft");
+
+        //dayContent.attr('id', 'value');
+        dayContent.addClass("day_info" );
+        spanContent.addClass("day_num");
+        spanContent.html(day_num);
+        pfoContent.addClass("day_info_p");
+        pfoContent.append(spanContent);
+        spanContent.before("第<br/>");
+        spanContent.after("<br/>天");
+        dayContent.append(pfoContent);
+
+        circleContent.addClass("licircle");
+        if(!islast){
+            hrContent.addClass("h_line");
+        }
+
+        mouseContent.append(dayContent);
+        mouseContent.append(circleContent);
+        if(!islast){
+            mouseContent.append(hrContent);
+        }
+        return mouseContent;
+    }
+    
+    var rditems = createAlldayItems(1,rdata);
+    $("#popup_info").prepend(rditems);
+    var dayWidth = 97*(Object.keys(rdata).length-1)+30;
+    $("#day_txt textarea").css('width',dayWidth);
+    //初值
+    $("#day_txt textarea").html(rdata['1']["iDayTxt"]);
+    
+    $(".day_info").each(function(i, domday){
+        $(domday).click(function(){
+            $(".day_info").removeClass("day_info_check");
+            $(".day_info").next().removeClass("day_info_p_check");
+            $(".day_info").next().next().removeClass("licircle_check");
+            $(domday).addClass("day_info_check");
+            $(domday).next().addClass("day_info_p_check");
+            $(domday).next().next().addClass("licircle_check");
+            var dayNo = $(domday).find('span').html();
+            var dayText = rdata[dayNo]["iDayTxt"];
+            $("#day_txt textarea").html(dayText);
+        });   
+            
+    });
+    /*
+    var callme = function(){
+            $(".foleft").each(function(i, domday){
+                dayWidth +=parseInt($(domday).width());
+                console.log(dayWidth);
+                console.log('aaaaa');
+            });
+            console.log('dddddddd');
+        }
+    var dayWidth = 0;
+    $(".day_info").each(function(i, domday){
+        dayWidth +=parseInt($(domday).parent().width());
+        console.log(dayWidth);
+        $(domday).click(function(){
+            $(domday).css({"background":"#00ACEA","color":"white","margin-top":"12px", "margin-left": "5px"});
+            $(domday).next().css({"background": "#BBE70D","width":"15px", "height":"15px"});
+            $(domday).next().next().css({"margin-top":"10px"});
+            var dayNo = $(domday).find('span').html();
+            console.log(dayNo);  
+        });   
+            
+    });
+    $("#day_txt textarea").css('width',dayWidth);*/
+
+});
+</script>
+</head>
+<body >
+<div class="container">
+    <div class="row clearfix">
+        <div id ='popupme' class="col-md-10 column div_center">
+            <div id = 'popup_info'>
+                <div id="day_txt" style="clear:both;"> 
+                    <textarea style="width: 509px;">当日线路信息</textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+          
+</body>
+</html>

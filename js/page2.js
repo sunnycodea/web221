@@ -95,9 +95,13 @@ $(document).ready(function(){
                         success: function(data, textStatus){
                             var rditems = createThemeDivItems(page,data);
                             $("#hehe").after(rditems);
-                            //$("item",data).each(function(i, domEle){
-                            ///   $(".ajax.ajaxResult").append("<li>"+$(domEle).children("title").text()+"</li>");
-                            //});
+                            $(".mouseky").each(function(index, element){
+                                var rid = $(element).attr('route_id');
+                    　　        $(element).click(function(){
+                                    var myiframe = '<iframe scrolling="auto"  id="poiframe" src="../page_day.html" style="height: 419px;width: 708px;"></iframe>';
+                                    TINY.box.show(myiframe,0,0,0,1);
+                                });
+                            });
                         },
                         complete: function(XMLHttpRequest, textStatus){
                             //HideLoading();
@@ -154,13 +158,13 @@ $(document).ready(function(){
             if(i%2==1){
               var  rowContent = $('<div></div>');
             }
-            rowContent = createRouteItem(rowContent,data_set[i].title+page,data_set[i].brief+page,data_set[i].price*page)
+            rowContent = createRouteItem(rowContent,data_set[i].iRouteID,data_set[i].title+page,data_set[i].brief+page,data_set[i].price*page)
             $divItems = $divItems.add(rowContent);
         }
         return $divItems;
         
     };
-    var createRouteItem = function (rowContent,title,brief,price){
+    var createRouteItem = function (rowContent,RouteID,title,brief,price){
         var mouseContent = $('<div></div>'),
             tfoContent = $('<div></div>'),
             titleContent = $('<h4></h4>'),
@@ -172,6 +176,7 @@ $(document).ready(function(){
         rowContent.addClass("row yabohe row-margin-top clearfix");
 
         mouseContent.addClass("col-md-6 column mouseky");
+        mouseContent.attr('route_id',RouteID);
 
         tfoContent.addClass("col-md-6 column info" );
         titleContent.addClass("title" ).html(title);
@@ -202,9 +207,15 @@ $(document).ready(function(){
         success: function(data, textStatus){
             var rditems = createThemeDivItems(1,data);
             $("#hehe").after(rditems);
-            //$("item",data).each(function(i, domEle){
-            ///   $(".ajax.ajaxResult").append("<li>"+$(domEle).children("title").text()+"</li>");
-            //});
+            $(".mouseky").each(function(index, element){
+                var rid = $(element).attr('route_id');
+    　　        $(element).click(function(){
+                    var myiframe = '<iframe scrolling="auto"  id="poiframe" src="../page_day.html" style="height: 419px;width: 708px;"></iframe>';
+                    TINY.box.show(myiframe,0,0,0,1);
+                    //TINY.box.twalpha($("#tinymask").get(0),81,1,1);
+                });
+            });
+            
         },
         complete: function(XMLHttpRequest, textStatus){
             //HideLoading();
@@ -216,4 +227,6 @@ $(document).ready(function(){
             //console.log(XMLHttpRequest.readyState);
         }
     });
+
 });
+

@@ -143,14 +143,29 @@
     margin-top:0px;
     margin-bottom:10px;
 }
-
+/*
+.h_line{
+    border : 1px solid #00ACEA;
+    margin-top:6px;
+    margin-bottom:0px;
+    width:75px; 
+}*/
 .circle{ border:2px solid #F9F6F5; width:100px; height:100px; margin:0 auto; 
 -webkit-border-radius:50px; 
 -moz-border-radius:50px; 
 -o-border-radius:50px; 
 border-radius:50px; 
 } 
-
+/*
+.licircle{ 
+background-color: #00ACEA;
+border:2px solid #F9F6F5; width:15px; height:15px; margin:0 auto; 
+-webkit-border-radius:50px; 
+-moz-border-radius:50px; 
+-o-border-radius:50px; 
+border-radius:50px; 
+} 
+*/
 /*保持bootstrap行等高：bootstrap row col height same*/
 .row{
     overflow: hidden; 
@@ -166,9 +181,13 @@ border-radius:50px;
 
 .mouseky{
     cursor:pointer;
+   /* background-image:url(../image/sililanka1.jpg);
+    background-repeat:repeat-y;
+    background-position: 30% 20%; */
 }
 .mouseky div{
-    background:#FACE0D;
+    color: white;
+    background: #FC585F;
 }
 .price{
     text-align:center;

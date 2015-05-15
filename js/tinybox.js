@@ -78,6 +78,10 @@ TINY.box=function(){
 			var o=Math.round(e.style.opacity*100);
 			if(o==a){
 				clearInterval(e.ai);
+				//设置opacity值
+				var opp = 85;
+				e.style.opacity=opp/100; 
+				e.style.filter='alpha(opacity='+opp+')'
 				if(d==-1){
 					e.style.display='none';
 					e==p?TINY.box.alpha(m,-1,0,3):b.innerHTML=p.style.backgroundImage=''
@@ -92,6 +96,8 @@ TINY.box=function(){
 		size:function(e,w,h,s){
 			//20padding + 20border
 			h = h+20+20;
+			//20padding + 20border
+			w = w+20+20;
 			e=typeof e=='object'?e:T$(e); clearInterval(e.si);
 			var ow=e.offsetWidth, oh=e.offsetHeight,
 			wo=ow-parseInt(e.style.width), ho=oh-parseInt(e.style.height);
