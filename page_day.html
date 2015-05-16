@@ -27,22 +27,21 @@
 .h_line{
     float:left;
     border : 1px solid #00ACEA;
-    margin-top:6px;
     width:75px; 
 }
 .licircle{ 
     float:left;
     background: #00ACEA;
-    border:3px solid #F9F6F5; width:10px; height:10px;
+    /*border:3px solid #F9F6F5; */
+    width:10px; 
+    height:10px;
     -webkit-border-radius:50px; 
     -moz-border-radius:50px; 
     -o-border-radius:50px; 
     border-radius:50px; 
     margin-left: 5px;
+    margin-top:4px;
 }
-.licircle_check{ 
-    margin-top:10px;
-} 
 .day_info{
     color: #00ACEA;
     margin-bottom: -8px;
@@ -53,17 +52,19 @@
 .day_info_check{
     background:#00ACEA;
     color:white;
-    margin-top:12px; 
-    margin-left: 5px;
 }
 .day_info_p{
-    padding-left: 5px;
+    padding-left: 2px;
     margin-bottom: 10px;
 }
 .day_info_p_check{
+    padding-left: 5px;
+}
+.licircle_check{
     background: #BBE70D;
     width:15px;
     height:15px;
+    margin-top: 2px;
 }
 .day_num{
    margin-left: 4px;
@@ -71,6 +72,7 @@
 .foleft{
     float: left;
     margin-bottom: 10px;
+    margin-left: -8px;
 }
 
 .div_center {
@@ -91,6 +93,8 @@ $(document).ready(function() {
         '4':{'iDayNum':4,'iDayTxt':'4444444当日旅游线路信息'},
         '5':{'iDayNum':5,'iDayTxt':'5555555当日旅游线路信息'},
         '6':{'iDayNum':6,'iDayTxt':'666666666当日旅游线路信息'},
+        '7':{'iDayNum':7,'iDayTxt':'777hyyy77当日旅游线路信息'},
+        '8':{'iDayNum':8,'iDayTxt':'8888888当日旅游线路信息'},
     };
     var createAlldayItems = function (RouteID,rdata,callback){
         var total_days = Object.keys(rdata).length;
@@ -140,28 +144,40 @@ $(document).ready(function() {
         }
         return mouseContent;
     }
-    
-    var rditems = createAlldayItems(1,rdata);
+
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+    var route_id = getParameterByName('route_id');
+    var rditems = createAlldayItems(route_id,rdata);
     $("#popup_info").prepend(rditems);
-    var dayWidth = 97*(Object.keys(rdata).length-1)+30;
+    var dayWidth = 84*(Object.keys(rdata).length-1)+30;
+    //console.log(dayWidth);
     $("#day_txt textarea").css('width',dayWidth);
+    $("#day_txt textarea").css('margin-left','-15px');
     //初值
     $("#day_txt textarea").html(rdata['1']["iDayTxt"]);
     
     $(".day_info").each(function(i, domday){
         $(domday).click(function(){
             $(".day_info").removeClass("day_info_check");
-            $(".day_info").next().removeClass("day_info_p_check");
-            $(".day_info").next().next().removeClass("licircle_check");
+            $(".day_info").find("p").removeClass("day_info_p_check");
+            $(".day_info").next().removeClass("licircle_check");
+           // $(".day_info").next().next().removeClass("licircle_check");
             $(domday).addClass("day_info_check");
-            $(domday).next().addClass("day_info_p_check");
-            $(domday).next().next().addClass("licircle_check");
+            $(domday).find("p").addClass("day_info_p_check");
+            $(domday).next().addClass("licircle_check");
+            //$(domday).next().next().addClass("licircle_check");
             var dayNo = $(domday).find('span').html();
             var dayText = rdata[dayNo]["iDayTxt"];
             $("#day_txt textarea").html(dayText);
         });   
             
     });
+
     /*
     var callme = function(){
             $(".foleft").each(function(i, domday){
