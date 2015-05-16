@@ -27,7 +27,7 @@
 .h_line{
     float:left;
     border : 1px solid #00ACEA;
-    width:75px; 
+    width:55px; 
 }
 .licircle{ 
     float:left;
@@ -168,12 +168,16 @@ $(document).ready(function() {
             
             var rditems = createAlldayItems(route_id,jsond);
             $("#popup_info").prepend(rditems);
-            var dayWidth = 84*(Object.keys(jsond).length-1)+30;
+            var dayWidth = 69*(Object.keys(jsond).length-1);
             //console.log(dayWidth);
             $("#day_txt textarea").css('width',dayWidth);
             $("#day_txt textarea").css('margin-left','-15px');
             //初值
             $("#day_txt textarea").html(jsond['1']["iDayTxt"]);
+            var firstday = $(".day_info").first();
+            $(firstday).addClass("day_info_check");
+            $(firstday).find("p").addClass("day_info_p_check");
+            $(firstday).next().addClass("licircle_check");
 
             $(".day_info").each(function(i, domday){
                 $(domday).click(function(){
