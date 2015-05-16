@@ -151,32 +151,59 @@ $(document).ready(function() {
             results = regex.exec(location.search);
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
+
     var route_id = getParameterByName('route_id');
-    var rditems = createAlldayItems(route_id,rdata);
-    $("#popup_info").prepend(rditems);
-    var dayWidth = 84*(Object.keys(rdata).length-1)+30;
-    //console.log(dayWidth);
-    $("#day_txt textarea").css('width',dayWidth);
-    $("#day_txt textarea").css('margin-left','-15px');
-    //初值
-    $("#day_txt textarea").html(rdata['1']["iDayTxt"]);
-    
-    $(".day_info").each(function(i, domday){
-        $(domday).click(function(){
-            $(".day_info").removeClass("day_info_check");
-            $(".day_info").find("p").removeClass("day_info_p_check");
-            $(".day_info").next().removeClass("licircle_check");
-           // $(".day_info").next().next().removeClass("licircle_check");
-            $(domday).addClass("day_info_check");
-            $(domday).find("p").addClass("day_info_p_check");
-            $(domday).next().addClass("licircle_check");
-            //$(domday).next().next().addClass("licircle_check");
-            var dayNo = $(domday).find('span').html();
-            var dayText = rdata[dayNo]["iDayTxt"];
-            $("#day_txt textarea").html(dayText);
-        });   
+    $.ajax({
+        type: "post",
+        url: "wh_svr/cgi/getDays.php",
+        dataType:'json',
+        data:{  
+             iRouteID : route_id
+        }, 
+        beforeSend: function(XMLHttpRequest){
+            //ShowLoading();
+        },
+        success: function(data, textStatus){
+            jsond = data;
+            
+            var rditems = createAlldayItems(route_id,rdata);
+            $("#popup_info").prepend(rditems);
+            var dayWidth = 84*(Object.keys(rdata).length-1)+30;
+            //console.log(dayWidth);
+            $("#day_txt textarea").css('width',dayWidth);
+            $("#day_txt textarea").css('margin-left','-15px');
+            //初值
+            $("#day_txt textarea").html(rdata['1']["iDayTxt"]);
+
+            $(".day_info").each(function(i, domday){
+            $(domday).click(function(){
+                $(".day_info").removeClass("day_info_check");
+                $(".day_info").find("p").removeClass("day_info_p_check");
+                $(".day_info").next().removeClass("licircle_check");
+               // $(".day_info").next().next().removeClass("licircle_check");
+                $(domday).addClass("day_info_check");
+                $(domday).find("p").addClass("day_info_p_check");
+                $(domday).next().addClass("licircle_check");
+                //$(domday).next().next().addClass("licircle_check");
+                var dayNo = $(domday).find('span').html();
+                var dayText = rdata[dayNo]["iDayTxt"];
+                $("#day_txt textarea").html(dayText);
+            });   
             
     });
+            
+        },
+        complete: function(XMLHttpRequest, textStatus){
+            //HideLoading();
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown){
+            //请求出错处理
+            //console.log(textStatus);
+            //console.log(XMLHttpRequest.status);
+            //console.log(XMLHttpRequest.readyState);
+        }
+    });
+    
 
     /*
     var callme = function(){
