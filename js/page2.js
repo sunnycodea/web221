@@ -155,7 +155,6 @@ $(document).ready(function(){
                     '10':{'title':'title9','brief':'brief9','price':'9999'},
                     '11':{'title':'title10','brief':'brief10','price':'1010'}
             };*/
-    
 
     var createThemeDivItems = function ( page,data_set) {
         var themeContainer = $('<div></div>');
@@ -225,7 +224,7 @@ $(document).ready(function(){
             $(".mouseky").each(function(index, element){
                 var rid = $(element).attr('route_id');
     　　        $(element).click(function(){
-                    var myiframe = '<iframe scrolling="auto"  id="poiframe" src="../page_day.html" style="height: 419px;width: 708px;"></iframe>';
+                    var myiframe = '<iframe scrolling="auto"  id="poiframe" src="../page_day.html?route_id='+rid+'" style="height: 419px;width: 708px;"></iframe>';
                     TINY.box.show(myiframe,0,0,0,1);
                     //TINY.box.twalpha($("#tinymask").get(0),81,1,1);
                 });

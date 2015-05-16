@@ -144,11 +144,18 @@ $(document).ready(function() {
         }
         return mouseContent;
     }
-    
-    var rditems = createAlldayItems(1,rdata);
+
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+    var route_id = getParameterByName('route_id');
+    var rditems = createAlldayItems(route_id,rdata);
     $("#popup_info").prepend(rditems);
     var dayWidth = 84*(Object.keys(rdata).length-1)+30;
-    console.log(dayWidth);
+    //console.log(dayWidth);
     $("#day_txt textarea").css('width',dayWidth);
     $("#day_txt textarea").css('margin-left','-15px');
     //初值
@@ -170,6 +177,7 @@ $(document).ready(function() {
         });   
             
     });
+
     /*
     var callme = function(){
             $(".foleft").each(function(i, domday){
