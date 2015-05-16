@@ -176,21 +176,20 @@ $(document).ready(function() {
             $("#day_txt textarea").html(rdata['1']["iDayTxt"]);
 
             $(".day_info").each(function(i, domday){
-            $(domday).click(function(){
-                $(".day_info").removeClass("day_info_check");
-                $(".day_info").find("p").removeClass("day_info_p_check");
-                $(".day_info").next().removeClass("licircle_check");
-               // $(".day_info").next().next().removeClass("licircle_check");
-                $(domday).addClass("day_info_check");
-                $(domday).find("p").addClass("day_info_p_check");
-                $(domday).next().addClass("licircle_check");
-                //$(domday).next().next().addClass("licircle_check");
-                var dayNo = $(domday).find('span').html();
-                var dayText = rdata[dayNo]["iDayTxt"];
-                $("#day_txt textarea").html(dayText);
-            });   
-            
-    });
+                $(domday).click(function(){
+                    $(".day_info").removeClass("day_info_check");
+                    $(".day_info").find("p").removeClass("day_info_p_check");
+                    $(".day_info").next().removeClass("licircle_check");
+                   // $(".day_info").next().next().removeClass("licircle_check");
+                    $(domday).addClass("day_info_check");
+                    $(domday).find("p").addClass("day_info_p_check");
+                    $(domday).next().addClass("licircle_check");
+                    //$(domday).next().next().addClass("licircle_check");
+                    var dayNo = $(domday).find('span').html();
+                    var dayText = rdata[dayNo]["iDayTxt"];
+                    $("#day_txt textarea").html(dayText);
+                });   
+            });
             
         },
         complete: function(XMLHttpRequest, textStatus){
