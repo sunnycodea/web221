@@ -80,6 +80,15 @@ $(document).ready(function(){
                 last: '>',
                 loop: true,
                 onPageClick: function (event, page) {
+                    //调整分页器的宽度，使之对齐
+                    $("#pagination-demo").css('width','967px');
+                    $(".first a").css('width','40px');
+                    $(".pre a").css('width','50px');
+                    $(".next a").css('width','50px');
+                    $(".last a").css('width','43px');
+                    $(".page a").css('width','130px');
+                    $(".pagination").css('display','inherit');
+
                     $(".theme").remove();
                     $.ajax({
                         type: "get",
@@ -114,6 +123,13 @@ $(document).ready(function(){
                     });
                 }
             });
+            $("#pagination-demo").css('width','967px');
+            $(".first a").css('width','40px');
+            $(".pre a").css('width','50px');
+            $(".next a").css('width','50px');
+            $(".last a").css('width','43px');
+            $(".page a").css('width','130px');
+            $(".pagination").css('display','inherit');
             //$("item",data).each(function(i, domEle){
             ///   $(".ajax.ajaxResult").append("<li>"+$(domEle).children("title").text()+"</li>");
             //});
@@ -157,7 +173,7 @@ $(document).ready(function(){
             if(i%2==1){
               var  rowContent = $('<div></div>');
             }
-            rowContent = createRouteItem(rowContent,data_set[i].iRouteID,data_set[i].title+page,data_set[i].brief+page,data_set[i].price*page)
+            rowContent = createRouteItem(rowContent,data_set[i].iRouteID,data_set[i].title,data_set[i].brief,data_set[i].price)
             $divItems = $divItems.add(rowContent);
         }
         return $divItems;
