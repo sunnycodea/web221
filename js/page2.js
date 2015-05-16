@@ -107,7 +107,7 @@ $(document).ready(function(){
                             $(".mouseky").each(function(index, element){
                                 var rid = $(element).attr('route_id');
                     　　        $(element).click(function(){
-                                    var myiframe = '<iframe scrolling="auto"  id="poiframe" src="../page_day.html" style="height: 419px;width: 708px;"></iframe>';
+                                    var myiframe = '<iframe scrolling="auto"  id="poiframe" src="../page_day.html?route_id='+rid+'" style="height: 419px;width: 708px;"></iframe>';
                                     TINY.box.show(myiframe,0,0,0,1);
                                 });
                             });
@@ -214,7 +214,7 @@ $(document).ready(function(){
         url: "wh_svr/cgi/getRoute.php",
         dataType:'json', 
         data:{  
-             iThemeID : 1001
+             iThemeID : 1002
         },   
         beforeSend: function(XMLHttpRequest){
             //ShowLoading();
