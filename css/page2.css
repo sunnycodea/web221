@@ -177,6 +177,7 @@ border-radius:50px;
 
 .row-margin-top {
         margin-top: 10px;
+        height: 69px;
     }
 
 .mouseky{
@@ -190,9 +191,14 @@ border-radius:50px;
     color: white;
     background: #FC585F;
 }
+.title{
+    margin-bottom:4px;
+    margin-top: 15px;
+}
 .price{
     text-align:center;
-    margin-top:25px;
+    margin-top:19px;  
+    font-size: 158%;
 }
 .theme{
     width:102%;

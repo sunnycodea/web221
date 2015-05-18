@@ -193,14 +193,14 @@ $(document).ready(function(){
         mouseContent.addClass("col-md-6 column mouseky");
         mouseContent.attr('route_id',RouteID);
 
-        tfoContent.addClass("col-md-6 column info" );
+        tfoContent.addClass("col-md-8 column info" );
         titleContent.addClass("title" ).html(title);
         briefContent.addClass("brief" ).html(brief);
         tfoContent.append(titleContent);
         tfoContent.append(briefContent);
 
-        pfoContent.addClass("col-md-6 column info" );
-        priceContent.addClass("price" ).html(price);
+        pfoContent.addClass("col-md-4 column info" );
+        priceContent.addClass("price" ).html("￥"+price);
         pfoContent.append(priceContent);
 
         mouseContent.append(tfoContent);
