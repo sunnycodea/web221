@@ -8,6 +8,9 @@ $(document).ready(function() {
     catch (error){
         console.error(err);
     }
+    $("#nav-header").click(function() {
+        window.location.href = '../';
+    });
     $("#nav-1").click(function() {
         window.location.href = '../page1.html';
     });

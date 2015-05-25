@@ -3,7 +3,7 @@ $("#logo").fadeIn(3000);
 
 $(document).ready(function() {
     setTimeout(function() {
-        $("#logo").fadeOut(1000,function() {
+        $("#logo").fadeOut(1500,function() {
             window.location.href='page1.html';   
         });
     },3000);
