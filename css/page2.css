@@ -182,14 +182,15 @@ border-radius:50px;
 
 .mouseky{
     cursor:pointer;
-   /* background-image:url(../image/sililanka1.jpg);
+    background-image:url(../image/routebg_7.jpg);
     background-repeat:repeat-y;
-    background-position: 30% 20%; */
-    width: 49.85%;
+    background-position-x: 43%;
+    /*background-position-y: 45%;*/
+    background-size: 466.938px 70px;
 }
 .mouseky div{
     color: white;
-    background: #FC585F;
+    /*background: #FC585F;*/
 }
 .title{
     margin-bottom:4px;

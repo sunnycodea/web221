@@ -193,6 +193,10 @@ $(document).ready(function(){
 
         mouseContent.addClass("col-md-6 column mouseky");
         mouseContent.attr('route_id',RouteID);
+        var imgbg_num = RouteID %10;
+        if(imgbg_num==0)
+            imgbg_num =10;
+        mouseContent.css("background-image","url(../image/routebg_"+imgbg_num+".jpg)");
 
         tfoContent.addClass("col-md-8 column info" );
         titleContent.addClass("title" ).html(title);
